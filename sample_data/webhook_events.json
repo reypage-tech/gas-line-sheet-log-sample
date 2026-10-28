@@ -1,0 +1,6 @@
+{"destination":"Udemo_bot","events":[
+ {"type":"message","webhookEventId":"EV001","timestamp":1793149200000,"replyToken":"rt001","source":{"type":"user","userId":"Udemo0001"},"message":{"id":"m001","type":"text","text":"見積もりの件で質問があります"}},
+ {"type":"message","webhookEventId":"EV002","timestamp":1793149260000,"replyToken":"rt002","source":{"type":"user","userId":"Udemo0001"},"message":{"id":"m002","type":"image"}},
+ {"type":"message","webhookEventId":"EV003","timestamp":1793152800000,"replyToken":"rt003","source":{"type":"user","userId":"Udemo0002"},"message":{"id":"m003","type":"sticker","packageId":"446","stickerId":"1988"}},
+ {"type":"follow","webhookEventId":"EV004","timestamp":1793152900000,"source":{"type":"user","userId":"Udemo0003"}}
+]}

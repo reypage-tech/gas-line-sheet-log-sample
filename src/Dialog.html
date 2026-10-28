@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><base target="_top"><meta charset="utf-8">
+<style>body{font-family:sans-serif;font-size:13px}label{display:block;margin-top:10px}select,textarea,input{width:100%;box-sizing:border-box}textarea{height:90px}#msg{margin-top:10px}</style>
+</head>
+<body>
+  <label>送り先（表示名）<select id="name"></select></label>
+  <label>本文<textarea id="text"></textarea></label>
+  <label>画像URL（https の公開URL、またはドライブのファイルID。無ければ空欄）<input id="image"></label>
+  <button id="send" style="margin-top:12px">送る</button>
+  <div id="msg"></div>
+<script>
+  google.script.run.withSuccessHandler(function (names) {
+    var sel = document.getElementById('name');
+    names.forEach(function (n) { var o = document.createElement('option'); o.textContent = n; sel.appendChild(o); });
+  }).getContactNames();
+  document.getElementById('send').onclick = function () {
+    var b = this; b.disabled = true;
+    document.getElementById('msg').textContent = '送信しています';
+    google.script.run
+      .withSuccessHandler(function (s) { document.getElementById('msg').textContent = s + '（トーク履歴に記録しました）'; b.disabled = false; document.getElementById('text').value = ''; document.getElementById('image').value = ''; })
+      .withFailureHandler(function (e) { document.getElementById('msg').textContent = 'エラー: ' + e.message; b.disabled = false; })
+      .sendByName(document.getElementById('name').value, document.getElementById('text').value, document.getElementById('image').value);
+  };
+</script>
+</body>
+</html>

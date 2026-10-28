@@ -1,0 +1,1 @@
+{ "name": "gas-line-sheet-log-sample", "private": true, "scripts": { "test": "node --test test/code.test.js", "shots": "node tools/render.js" } }
