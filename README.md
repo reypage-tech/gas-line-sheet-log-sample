@@ -1,17 +1,11 @@
 # gas-line-sheet-log-sample
 
-## In English
+LINE公式アカウントの1対1トーク（受信・送信、画像を含む）をスプレッドシートに残す、トーク対応の担当者向けの Google Apps Script の見本です。
 
-A Google Apps Script sample that logs one-to-one LINE Official Account chats (received and sent messages, including images) into a spreadsheet. All data is fictional.
-Incoming messages arrive by webhook and are added as rows. Staff send messages from a sheet menu or a small send dialog, choosing the recipient by display name, and each sent message is logged at the same time.
-The existing four columns (received time, user name, message, image URL) stay in place. New columns are added from column E.
-How to try it:
-1. Create a new spreadsheet and open Apps Script from Extensions.
-2. Paste `src/Code.gs` and `src/Dialog.html`, then set the script properties `LINE_CHANNEL_ACCESS_TOKEN`, `SHEET_ID` and `IMAGE_FOLDER_ID`.
-3. Deploy as a web app and set its URL as the webhook URL in LINE Developers.
-4. Local tests with mocked Google and LINE services: `npm test`. Not yet run in a real Apps Script project or with a real LINE account.
+**効果：** 管理画面を1件ずつ開いて確かめていた送信履歴が、シートから送ると同時にトーク履歴へ自動で残るようになります。
 
-LINE公式アカウントの1対1トーク（受信・送信、画像を含む）をスプレッドシートに記録する Google Apps Script の見本です。
+![トーク履歴シート（模擬環境での出力・架空データ）](docs/01_sheet.png)
+
 登場するお店・人物・メッセージはすべて架空です。
 
 ## 課題
@@ -29,7 +23,7 @@ LINE公式アカウントのトークを、受信はシートに残せていて�
 LINE Official Account Managerのチャット画面から手で送った分は、Messaging APIの外にあるため自動では記録できません。この見本では、送る場所をシートか送信画面に移す形にしています（くわしくは docs/MEMO_送信分の取り方.md）。
 
 ## 画面
-![トーク履歴シート](docs/01_sheet.png)
+画像はローカルの模擬環境（Google・LINEのモック）で出したもので、本物のアカウントの画面ではありません。
 ![コードの要点](docs/02_code.png)
 ![送信画面](docs/03_dialog.png)
 
@@ -63,3 +57,14 @@ Reypage｜GAS業務自動化
 
 ## ライセンス
 MIT（LICENSE を参照）
+
+## In English
+
+A Google Apps Script sample that logs one-to-one LINE Official Account chats (received and sent messages, including images) into a spreadsheet. All data is fictional.
+Incoming messages arrive by webhook and are added as rows. Staff send messages from a sheet menu or a small send dialog, choosing the recipient by display name, and each sent message is logged at the same time.
+The existing four columns (received time, user name, message, image URL) stay in place. New columns are added from column E.
+How to try it:
+1. Create a new spreadsheet and open Apps Script from Extensions.
+2. Paste `src/Code.gs` and `src/Dialog.html`, then set the script properties `LINE_CHANNEL_ACCESS_TOKEN`, `SHEET_ID` and `IMAGE_FOLDER_ID`.
+3. Deploy as a web app and set its URL as the webhook URL in LINE Developers.
+4. Local tests with mocked Google and LINE services: `npm test`. Not yet run in a real Apps Script project or with a real LINE account.
